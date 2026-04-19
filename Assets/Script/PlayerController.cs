@@ -1,4 +1,5 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,20 @@ public class PlayerController : MonoBehaviour
     public float dashSpeed = 15f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 0.5f;
+
+    [Header("Health")]
+    public int maxHP = 3;
+    private int currentHP;
+
+    [Header("Invincible")]
+    public float invincibleTime = 1f;
+    private bool isInvincible = false;
+
+    [Header("Throw")]
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float fireRate = 0.3f;
+    private float lastFireTime;
 
     private float dashTime;
     private float lastDashTime;
@@ -27,25 +42,35 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+
+        currentHP = maxHP;
     }
 
     void Update()
     {
         if (isDead) return;
 
-        // ÃÑº input «éÒÂ¢ÇÒ
+        // ===== Movement Input =====
         moveInput = 0;
         if (Input.GetKey(KeyCode.A)) moveInput = -1;
         if (Input.GetKey(KeyCode.D)) moveInput = 1;
 
-        // Dash (¡´ Q)
+        // ===== Dash =====
         if (Input.GetKeyDown(KeyCode.Q) && !isDashing && Time.time >= lastDashTime + dashCooldown)
         {
             StartDash();
         }
 
-        // Animation ÇÔè§
-        anim.SetBool("isRunning", moveInput != 0 && !isDashing);
+        // ===== Throw (à¸„à¸¥à¸´à¸à¸‹à¹‰à¸²à¸¢) =====
+        if (Input.GetMouseButtonDown(0) && Time.time > lastFireTime + fireRate)
+        {
+            lastFireTime = Time.time;
+            Throw();
+        }
+
+        // ===== Animation =====
+        if (anim != null)
+            anim.SetBool("isRunning", moveInput != 0 && !isDashing);
     }
 
     void FixedUpdate()
@@ -53,25 +78,17 @@ public class PlayerController : MonoBehaviour
         if (isDead) return;
 
         if (isDashing)
-        {
             DashMove();
-        }
         else
-        {
             NormalMove();
-        }
     }
 
     void NormalMove()
     {
-        // à´Ô¹»¡µÔ
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        // ËÑ¹«éÒÂ¢ÇÒ (ãªé flipX á·¹ scale)
         if (moveInput != 0)
-        {
             sr.flipX = moveInput < 0;
-        }
     }
 
     void StartDash()
@@ -80,38 +97,107 @@ public class PlayerController : MonoBehaviour
         dashTime = dashDuration;
         lastDashTime = Time.time;
 
-        anim.SetTrigger("Slide");
+        if (anim != null)
+            anim.SetTrigger("Slide");
     }
 
     void DashMove()
     {
-        // ãªé·ÔÈ¨Ò¡ flipX
         float dir = sr.flipX ? -1f : 1f;
 
-        // ¾Øè§ä»¢éÒ§Ë¹éÒ (äÁèÂØè§á¡¹ Y = äÁèÅÍÂ)
         rb.velocity = new Vector2(dir * dashSpeed, rb.velocity.y);
 
         dashTime -= Time.fixedDeltaTime;
 
         if (dashTime <= 0)
-        {
             isDashing = false;
+    }
+
+    // ===== THROW SYSTEM =====
+    void Throw()
+    {
+        if (anim != null)
+            anim.SetTrigger("Throw"); // ðŸ‘ˆ à¹€à¸žà¸´à¹ˆà¸¡à¸šà¸£à¸£à¸—à¸±à¸”à¸™à¸µà¹‰
+
+        if (projectilePrefab == null || firePoint == null) return;
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f;
+
+        Vector2 direction = (mousePos - firePoint.position).normalized;
+
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+
+        Projectile p = proj.GetComponent<Projectile>();
+        if (p != null)
+        {
+            p.SetDirection(direction);
         }
     }
 
-    // ===== OPTIONAL =====
-
-    public void TakeDamage()
+    // ===== HEALTH SYSTEM =====
+    public void TakeDamage(int damage)
     {
-        if (isDashing) return; // dash ¡Ñ¹´ÒàÁ¨ä´é
+        if (isDead || isDashing || isInvincible) return;
 
-        Debug.Log("â´¹´ÒàÁ¨!");
+        currentHP -= damage;
+        Debug.Log("HP: " + currentHP);
+
+        if (currentHP <= 0)
+        {
+            Die();
+            GameManager.instance.GameOver();
+        }
+        else
+        {
+            StartCoroutine(Invincible());
+        }
+    }
+
+    IEnumerator Invincible()
+    {
+        isInvincible = true;
+
+        // à¸à¸£à¸°à¸žà¸£à¸´à¸š
+        for (int i = 0; i < 5; i++)
+        {
+            sr.enabled = false;
+            yield return new WaitForSeconds(0.1f);
+            sr.enabled = true;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
     }
 
     public void Die()
     {
+        if (isDead) return;
+
         isDead = true;
-        anim.SetTrigger("Dead");
+
+        if (anim != null)
+            anim.SetTrigger("Dead");
+
         rb.velocity = Vector2.zero;
+
+        Destroy(gameObject, 0.5f);
+    }
+
+    // ===== COLLISION =====
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle"))
+        {
+            Destroy(collision.gameObject);
+            TakeDamage(1);
+        }
+
+        if (collision.CompareTag("Coin"))
+        {
+            GameManager.instance.AddScore(10);
+            Destroy(collision.gameObject);
+        }
     }
 }
