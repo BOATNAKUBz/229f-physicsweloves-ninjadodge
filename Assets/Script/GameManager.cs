@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
 
     [Header("UI")]
-    public TextMeshProUGUI scoreNumber; // 👈 ตัวเลขเท่านั้น
+    public TextMeshProUGUI scoreNumber;
 
     [Header("Score Effect")]
     public float popScale = 1.3f;
@@ -64,11 +64,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
-        Invoke("RestartGame", 2f);
-    }
 
-    void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // 👉 ไป Scene GameOver
+        SceneManager.LoadScene("GameOver");
     }
 }
