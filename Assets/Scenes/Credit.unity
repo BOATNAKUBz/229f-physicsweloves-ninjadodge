@@ -299,7 +299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282.3, y: -981.4}
+  m_AnchoredPosition: {x: 282.3, y: -1028}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670128537
@@ -399,98 +399,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '=== CREDITS ===
-
-
-    Project: NinjaDodge
-
-
-    -------------------------
-
-    Team
-    Members
-
-    -------------------------
-
-
-    1670701166 Keerati Jumnongpon  No.6
-    (229F)
-
-    - UI (HP bar and score system)
-
-    - Added shooting sound effect
-
-    -
-    Start menu and end credit scene
-
-
-    1670704418 Natthaphon Suebthin  No.27 (229F)
-
-    -Coding
-    (game logic and systems)
-
-    -Level design
-
-    -Map and environment design
-
-    -Shooting
-    effects (visual effects)
-
-
-    -------------------------
-
-    Assets & Resources
-
-    -------------------------
-
-
-    -------------------------
-
-    Animation
-    & AI
-
-    -------------------------
-
-    - Used Meshy AI for 3D model and animation
-
-    -
-    Used Suno AI for music & gunshot sound effects
-
-
-    -------------------------
-
-    Tools
-
-    -------------------------
-
-    -
-    Unity Engine
-
-
-    -------------------------
-
-    Special Thanks
-
-    -------------------------
-
-    -
-    Instructor
-
-    - Bangkok University (BUITI)
-
-
-
-
-
-
-
-
-
-
-    -------------------------
-
-    Thank
-    you for playing!'
+  m_text: "=== CREDITS ===\n\nProject: NinjaDodge\n\n-------------------------\nTeam
+    Members\n-------------------------\n\n1670701166 Keerati Jumnongpon  No.6 (229F)\n-
+    UI (HP bar and score system)\n- Added shooting sound effect\n- Start menu and
+    end credit scene\n\n1670704418 Natthaphon Suebthin  No.27 (229F)\n- Coding (game
+    logic and systems)\n- Level design\n- Map and environment design\n\n-------------------------\nAssets
+    & Resources\n- GameART2D & homeless assets\nNinja Adventure assets\n- TechnoGami
+    Ui\n- TinyHealthSystem\n-------------------------\n\n-------------------------\n
+    AI\n-------------------------\n- Used Suno AI for music & Box sound effects\n\n-------------------------\nTools\n-------------------------\n-
+    Unity Engine\n\n-------------------------\nSpecial Thanks\n-------------------------\n-
+    Instructor\n- Bangkok University (BUITI)\n\n\n\n\n\n\n\n\n\n-------------------------\nThank
+    you for playing!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
