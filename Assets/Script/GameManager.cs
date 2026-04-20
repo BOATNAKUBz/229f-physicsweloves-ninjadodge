@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
 
-        // 👉 ไป Scene GameOver
+        PlayerPrefs.SetInt("LastScore", score); // 👈 เซฟคะแนน
+
         SceneManager.LoadScene("GameOver");
     }
 }
