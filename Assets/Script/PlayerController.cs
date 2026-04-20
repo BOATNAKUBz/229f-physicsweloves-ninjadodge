@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip coinSound;
     public AudioClip dashSound;
+    public AudioClip hitPlayerSound;
 
     private float dashTime;
     private float lastDashTime;
@@ -159,6 +160,11 @@ public class PlayerController : MonoBehaviour
         if (currentHP < 0)
             currentHP = 0;
 
+        if (audioSource != null && hitPlayerSound != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(hitPlayerSound);
+        }
         UpdateHeartsUI();
 
         Debug.Log("HP: " + currentHP);
