@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,9 +9,16 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public bool isGameOver = false;
 
+    public TextMeshProUGUI scoreText;
+
     void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        UpdateScoreUI();
     }
 
     public void AddScore(int amount)
@@ -18,14 +26,17 @@ public class GameManager : MonoBehaviour
         if (isGameOver) return;
 
         score += amount;
-        Debug.Log("Score: " + score);
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        scoreText.text = "Score : " + score;
     }
 
     public void GameOver()
     {
         isGameOver = true;
-        Debug.Log("GAME OVER");
-
         Invoke("RestartGame", 2f);
     }
 
