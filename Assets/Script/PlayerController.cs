@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 0.3f;
     private float lastFireTime;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public AudioClip coinSound;
+    public AudioClip dashSound;
+
     private float dashTime;
     private float lastDashTime;
 
@@ -100,6 +105,12 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         dashTime = dashDuration;
         lastDashTime = Time.time;
+
+        if (audioSource != null && dashSound != null)
+        {
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
+            audioSource.PlayOneShot(dashSound);
+        }
 
         if (anim != null)
             anim.SetTrigger("Slide");
@@ -215,6 +226,11 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("Coin"))
         {
             GameManager.instance.AddScore(10);
+            if (audioSource != null && coinSound != null)
+            {
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(coinSound);
+            }
             Destroy(collision.gameObject);
         }
     }
