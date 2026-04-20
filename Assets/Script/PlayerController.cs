@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public int maxHP = 3;
     private int currentHP;
+
+    [Header("UI")]
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     [Header("Invincible")]
     public float invincibleTime = 1f;
@@ -44,31 +50,29 @@ public class PlayerController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         currentHP = maxHP;
+
+        UpdateHeartsUI();
     }
 
     void Update()
     {
         if (isDead) return;
 
-        // ===== Movement Input =====
         moveInput = 0;
         if (Input.GetKey(KeyCode.A)) moveInput = -1;
         if (Input.GetKey(KeyCode.D)) moveInput = 1;
 
-        // ===== Dash =====
         if (Input.GetKeyDown(KeyCode.Q) && !isDashing && Time.time >= lastDashTime + dashCooldown)
         {
             StartDash();
         }
 
-        // ===== Throw (คลิกซ้าย) =====
         if (Input.GetMouseButtonDown(0) && Time.time > lastFireTime + fireRate)
         {
             lastFireTime = Time.time;
             Throw();
         }
 
-        // ===== Animation =====
         if (anim != null)
             anim.SetBool("isRunning", moveInput != 0 && !isDashing);
     }
@@ -113,11 +117,10 @@ public class PlayerController : MonoBehaviour
             isDashing = false;
     }
 
-    // ===== THROW SYSTEM =====
     void Throw()
     {
         if (anim != null)
-            anim.SetTrigger("Throw"); // 👈 เพิ่มบรรทัดนี้
+            anim.SetTrigger("Throw");
 
         if (projectilePrefab == null || firePoint == null) return;
 
@@ -141,6 +144,12 @@ public class PlayerController : MonoBehaviour
         if (isDead || isDashing || isInvincible) return;
 
         currentHP -= damage;
+
+        if (currentHP < 0)
+            currentHP = 0;
+
+        UpdateHeartsUI();
+
         Debug.Log("HP: " + currentHP);
 
         if (currentHP <= 0)
@@ -154,11 +163,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void UpdateHeartsUI()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < currentHP)
+                hearts[i].sprite = fullHeart;
+            else
+                hearts[i].sprite = emptyHeart;
+        }
+    }
+
     IEnumerator Invincible()
     {
         isInvincible = true;
 
-        // กระพริบ
         for (int i = 0; i < 5; i++)
         {
             sr.enabled = false;
@@ -185,7 +204,6 @@ public class PlayerController : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
 
-    // ===== COLLISION =====
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle"))
