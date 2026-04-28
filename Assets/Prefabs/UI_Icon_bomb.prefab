@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  mass: 1
   hitSound: {fileID: 8300000, guid: 2726c0892239c95459051233c01e9f8a, type: 3}
 --- !u!82 &5621205710683596918
 AudioSource:
@@ -174,7 +175,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8b9fb14fabf81294089847c30776dfeb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

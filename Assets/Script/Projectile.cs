@@ -1,9 +1,11 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
     public float speed = 10f;
+    public float mass = 1f; // เพิ่มมวล
+
     private Rigidbody2D rb;
 
     [Header("Sound")]
@@ -13,12 +15,21 @@ public class Projectile : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        audioSource = GetComponent<AudioSource>(); 
+        audioSource = GetComponent<AudioSource>();
+
+        rb.gravityScale = 0f;
     }
 
     public void SetDirection(Vector2 dir)
     {
-        rb.velocity = dir.normalized * speed;
+        // 🔥 คำนวณแรงจาก F = ma
+        float acceleration = speed; // เอา speed เป็น a แบบง่าย
+        float force = mass * acceleration;
+
+        // 🔥 แปลงเป็น velocity
+        Vector2 velocity = dir.normalized * force;
+
+        rb.velocity = velocity;
 
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -38,8 +49,7 @@ public class Projectile : MonoBehaviour
                 audioSource.PlayOneShot(hitSound, 0.5f);
             }
 
-            Destroy(gameObject, 1f);
+            Destroy(gameObject);
         }
     }
 }
-

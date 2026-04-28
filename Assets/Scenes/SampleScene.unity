@@ -1520,7 +1520,7 @@ Transform:
   m_GameObject: {fileID: 425836527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1753426, y: -4.8399067, z: 0.031182328}
+  m_LocalPosition: {x: -2.4, y: -5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2887,7 +2887,7 @@ Transform:
   m_GameObject: {fileID: 994902560}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.865343, y: -4.8399067, z: 0.031182328}
+  m_LocalPosition: {x: -10, y: -5, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3182,7 +3182,7 @@ Transform:
   m_GameObject: {fileID: 1340413053}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04, y: -0.8, z: -0.039529786}
+  m_LocalPosition: {x: 0.03, y: 3.71, z: -0.039529786}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3358,6 +3358,7 @@ MonoBehaviour:
   audioSource: {fileID: 1384202174}
   coinSound: {fileID: 8300000, guid: e40b82a855962a044975670a6138826a, type: 3}
   dashSound: {fileID: 8300000, guid: 8b9fb14fabf81294089847c30776dfeb, type: 3}
+  hitPlayerSound: {fileID: 0}
 --- !u!58 &1384202171
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3982,7 +3983,7 @@ Transform:
   m_GameObject: {fileID: 1892135046}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.0153427, y: -4.8399067, z: 0.031182328}
+  m_LocalPosition: {x: -6.2, y: -5, z: 0.031182328}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
