@@ -149,7 +149,7 @@ RectTransform:
   m_GameObject: {fileID: 208623679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.2747, y: 4.0125, z: 1}
+  m_LocalScale: {x: 27.05439, y: 11.686405, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 805558189}
@@ -292,14 +292,14 @@ RectTransform:
   m_GameObject: {fileID: 670128535}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.525, y: 1.705, z: 1}
+  m_LocalScale: {x: 8.751144, y: 5.9091883, z: 3.4657996}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 752784701}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 282.3, y: -1028}
+  m_AnchoredPosition: {x: 575, y: -2723}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670128537
@@ -376,7 +376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -277, y: -204}
+  m_AnchoredPosition: {x: -566, y: -681}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752784702
@@ -404,11 +404,12 @@ MonoBehaviour:
     UI (HP bar and score system)\n- Added shooting sound effect\n- Start menu and
     end credit scene\n\n1670704418 Natthaphon Suebthin  No.27 (229F)\n- Coding (game
     logic and systems)\n- Level design\n- Map and environment design\n\n-------------------------\nAssets
-    & Resources\n- GameART2D & homeless assets\nNinja Adventure assets\n- TechnoGami
-    Ui\n- TinyHealthSystem\n-------------------------\n\n-------------------------\n
-    AI\n-------------------------\n- Used Suno AI for music & Box sound effects\n\n-------------------------\nTools\n-------------------------\n-
-    Unity Engine\n\n-------------------------\nSpecial Thanks\n-------------------------\n-
-    Instructor\n- Bangkok University (BUITI)\n\n\n\n\n\n\n\n\n\n-------------------------\nThank
+    & Resources\n-------------------------\n- GameART2D & homeless assets\nNinja
+    Adventure assets\n- TechnoGami Ui\n- TinyHealthSystem\n\n-------------------------\n
+    AI & Sound\n-------------------------\n- Used Suno AI for music & Box sound effects\n-
+    Pixabay\n\n-------------------------\nTools\n-------------------------\n- Unity
+    Engine\n\n-------------------------\nSpecial Thanks\n-------------------------\n-
+    Instructor\n- Bangkok University (BUITI)\n\n\n\n\n\n\n\n\n\n\n\n\n-------------------------\nThank
     you for playing!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -431,13 +432,13 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -472,7 +473,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -569.2827, w: 0}
+  m_margin: {x: 0, y: 0, z: -1102.6846, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -547,12 +548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
