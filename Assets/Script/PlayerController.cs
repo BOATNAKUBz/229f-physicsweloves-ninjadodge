@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.A)) moveInput = -1;
         if (Input.GetKey(KeyCode.D)) moveInput = 1;
 
-        if (Input.GetKeyDown(KeyCode.Q) && !isDashing && Time.time >= lastDashTime + dashCooldown)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !isDashing && Time.time >= lastDashTime + dashCooldown)
         {
             StartDash();
         }
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         Projectile p = proj.GetComponent<Projectile>();
         if (p != null)
         {
-            p.SetDirection(direction);
+            p.SetDirection(direction); // ใช้ต่อได้
         }
     }
 

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5460466103898800710}
   - component: {fileID: 8786643516049584162}
   - component: {fileID: 8240148305098314690}
-  - component: {fileID: -7377052521271996243}
+  - component: {fileID: 330018666010366927}
+  - component: {fileID: 1284011242710014348}
   m_Layer: 0
   m_Name: Kunai
   m_TagString: Projectile
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: e3494150701680242901ab49c78d0588, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 1.6}
   m_AdaptiveModeThreshold: 0.5
@@ -143,13 +144,24 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.31999996, y: 1.5999999}
   m_Direction: 0
---- !u!114 &-7377052521271996243
+--- !u!247 &330018666010366927
+ConstantForce2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3759969878484126401}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -15}
+  m_RelativeForce: {x: 0, y: 0}
+  m_Torque: 0
+--- !u!114 &1284011242710014348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,8 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3759969878484126401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aca5dac408dd0cb4584de3534534b1e1, type: 3}
+  m_Script: {fileID: 11500000, guid: bb12be3dc5aaeb84687a4c5cb33ad054, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  hitSound: {fileID: 0}
+  damage: 1

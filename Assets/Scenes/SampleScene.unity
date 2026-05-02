@@ -933,6 +933,7 @@ MonoBehaviour:
   - {fileID: 75900947735778647, guid: 4961921ee37e3bf42a14b1a32fe3e62f, type: 3}
   - {fileID: 2951640426207932084, guid: 12f8892a8e46c13458c4036383c732ab, type: 3}
   - {fileID: 1523011223382150443, guid: 7575c00c4f573564090d2094abc773a3, type: 3}
+  - {fileID: 3759969878484126401, guid: 9af007abb174d6b41a63f9dab6645270, type: 3}
   spawnRate: 1
   spawnRangeX: 4
 --- !u!4 &173303103
@@ -1988,7 +1989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -192.4, y: -87.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &767305280
@@ -3204,7 +3205,7 @@ GameObject:
   - component: {fileID: 1384202172}
   - component: {fileID: 1384202174}
   m_Layer: 0
-  m_Name: Idle__000
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3356,7 +3357,7 @@ MonoBehaviour:
   audioSource: {fileID: 1384202174}
   coinSound: {fileID: 8300000, guid: e40b82a855962a044975670a6138826a, type: 3}
   dashSound: {fileID: 8300000, guid: 8b9fb14fabf81294089847c30776dfeb, type: 3}
-  hitPlayerSound: {fileID: 0}
+  hitPlayerSound: {fileID: 8300000, guid: 2726c0892239c95459051233c01e9f8a, type: 3}
 --- !u!61 &1384202172
 BoxCollider2D:
   m_ObjectHideFlags: 0
