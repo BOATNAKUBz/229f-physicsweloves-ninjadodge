@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         Projectile p = proj.GetComponent<Projectile>();
         if (p != null)
         {
-            p.SetDirection(direction);
+            p.SetDirection(direction); // ใช้ต่อได้
         }
     }
 

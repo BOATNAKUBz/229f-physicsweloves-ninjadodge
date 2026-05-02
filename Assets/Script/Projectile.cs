@@ -3,8 +3,8 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class Projectile : MonoBehaviour
 {
-    public float speed = 10f;
-    public float mass = 1f; // เพิ่มมวล
+    public float acceleration = 10f; // a
+    public float mass = 1f;          // m
 
     private Rigidbody2D rb;
 
@@ -17,22 +17,24 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
 
-        rb.gravityScale = 0f;
+        rb.gravityScale = 1f;       // ให้ตกแบบ projectile
+        rb.drag = 0.5f;   // แรงต้านอากาศ (Air Resistance)
     }
 
     public void SetDirection(Vector2 dir)
     {
-        // 🔥 คำนวณแรงจาก F = ma
-        float acceleration = speed; // เอา speed เป็น a แบบง่าย
+        //  F = m * a
         float force = mass * acceleration;
 
-        // 🔥 แปลงเป็น velocity
-        Vector2 velocity = dir.normalized * force;
+        //  ใช้ AddForce แทน velocity
+        rb.AddForce(dir.normalized * force, ForceMode2D.Impulse);
 
-        rb.velocity = velocity;
-
+        // หมุนให้หันไปทิศยิง
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        // หมุนตอนบิน (Rotational Motion)
+        rb.angularVelocity = 300f;
 
         Destroy(gameObject, 5f);
     }
@@ -43,9 +45,10 @@ public class Projectile : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            if (hitSound != null)
+            if (audioSource != null && hitSound != null)
             {
-                AudioSource.PlayClipAtPoint(hitSound, transform.position, 0.5f);
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(hitSound, 0.5f);
             }
 
             Destroy(gameObject);
