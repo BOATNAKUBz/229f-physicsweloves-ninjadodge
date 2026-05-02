@@ -27,7 +27,7 @@ public class FallingObject : MonoBehaviour
         float randomX = Random.Range(-sideForce, sideForce);
         rb.AddForce(new Vector2(randomX, 0f), ForceMode2D.Impulse);
 
-        // ใส่แรงหมุน (แกน Z)
+        // ใส่แรงหมุน แกน Z
         float randomSpin = Random.Range(-spinForce, spinForce);
         rb.AddTorque(randomSpin, ForceMode2D.Impulse);
     }
@@ -41,7 +41,7 @@ public class FallingObject : MonoBehaviour
         }
     }
 
-    // (เสริม) ถ้าชนพื้นแล้วให้หาย
+    //  ถ้าชนพื้นแล้วให้หาย
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Ground"))

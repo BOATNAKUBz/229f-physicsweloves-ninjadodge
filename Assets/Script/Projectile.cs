@@ -49,6 +49,11 @@ public class Projectile : MonoBehaviour
             {
                 audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.PlayOneShot(hitSound, 0.5f);
+
+                AudioSource.PlayClipAtPoint(hitSound, transform.position, 0.5f);
+                Destroy(gameObject);
+
+
             }
 
             Destroy(gameObject);

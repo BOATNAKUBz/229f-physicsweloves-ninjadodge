@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca5dac408dd0cb4584de3534534b1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  acceleration: 10
   mass: 1
   hitSound: {fileID: 8300000, guid: 2726c0892239c95459051233c01e9f8a, type: 3}
 --- !u!82 &5621205710683596918
