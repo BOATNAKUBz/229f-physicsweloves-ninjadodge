@@ -45,10 +45,13 @@ public class Projectile : MonoBehaviour
         {
             Destroy(collision.gameObject);
 
-            if (audioSource != null && hitSound != null)
+            if (hitSound != null)
             {
                 AudioSource.PlayClipAtPoint(hitSound, transform.position, 0.5f);
+<<<<<<< HEAD
                 Destroy(gameObject);
+=======
+>>>>>>> 5ac43e4d675bf8ff7cb02dadf018914127272733
             }
 
             Destroy(gameObject);
